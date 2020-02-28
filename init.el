@@ -53,6 +53,12 @@
 (electric-pair-mode 1) ; automatic parentheses
 (setq column-number-mode 1) ; show cursor location
 
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows 1
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main 1)
+
 ;; org mode color levels
 (custom-theme-set-faces 'user
                         `(org-level-1 ((t (:foreground "red")))))

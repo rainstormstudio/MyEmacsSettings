@@ -5,6 +5,7 @@
 ;; yasnippet-snippets
 ;; yasnippet
 ;; company
+;; company-lsp
 ;; flycheck
 ;; cquery
 ;; projectile
@@ -93,6 +94,7 @@
 			     yasnippet-snippets
 			     yasnippet
 			     company
+			     company-lsp
 			     flycheck
 			     cquery
 			     projectile
@@ -134,6 +136,9 @@
 (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
 (setq company-idle-delay 0)
 
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+
 (require 'flycheck)
 (global-flycheck-mode 1)
 
@@ -144,6 +149,18 @@
   (condition-case nil
       (lsp)
     (user-error nil)))
+(defun cquery-root()
+  (let ((root (cquery--get-root))
+	(isroot nil))
+    (cond (root
+	   (dolist (f '("compile_commands.json" "build/compile_commands.json"))
+	     (setq isroot (or isroot (file-exists-p (expand-file-name f root)))))))
+    (if isroot
+	root
+      nil)))
+(defun cquery-cache-dir (dir)
+  (expand-file-name cquery-cache-dir (cquery-root)))
+(setq cquery-cache-dir-function #'cquery-cache-dir)
 
 (add-hook 'c-mode-hook #'cquery//enable)
 (add-hook 'c++-mode-hook #'cquery//enable)

@@ -6,6 +6,7 @@
 ;; yasnippet
 ;; company
 ;; company-lsp
+;; company-c-headers
 ;; flycheck
 ;; cquery
 ;; projectile
@@ -95,6 +96,7 @@
 			     yasnippet
 			     company
 			     company-lsp
+			     company-c-headers
 			     flycheck
 			     cquery
 			     projectile
@@ -135,6 +137,10 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
 (setq company-idle-delay 0)
+
+(require 'company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/7.4.0")
 
 (require 'company-lsp)
 (push 'company-lsp company-backends)
@@ -233,6 +239,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
  '(package-selected-packages (quote (flycheck company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

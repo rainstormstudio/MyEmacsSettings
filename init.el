@@ -45,6 +45,7 @@
 (add-to-list 'default-frame-alist '(height . 46))
 (add-to-list 'default-frame-alist '(width . 140))
 
+(global-visual-line-mode 1) ; line wrapping
 (setq make-backup-files nil) ; disable backup files
 (tool-bar-mode -1) ; turn off tool-bar
 (global-linum-mode 1) ; show line number

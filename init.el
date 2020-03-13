@@ -13,6 +13,7 @@
 ;; helm
 ;; lua-mode
 ;; racket-mode
+;; glsl-mode
 ;; --------------------------------------------------------------------------------
 ;;; Commentary:
 ;; Author: Hongyu Ding
@@ -111,6 +112,7 @@
 			     helm
 			     lua-mode
 			     racket-mode
+			     glsl-mode
 			     )
   "Default packages")
 (defun rainstorm/packages-installed-p ()
@@ -238,6 +240,12 @@
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+;; ================================================================================
+
+(require 'glsl-mode)
+(add-to-list 'auto-mode-alist '("\\.fsh$" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vsh$" . glsl-mode))
 
 ;; ================================================================================
 

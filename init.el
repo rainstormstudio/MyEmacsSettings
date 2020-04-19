@@ -6,6 +6,7 @@
 ;; yasnippet
 ;; company
 ;; company-lsp
+;; company-tabnine
 ;; company-c-headers
 ;; flycheck
 ;; cquery

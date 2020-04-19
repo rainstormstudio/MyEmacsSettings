@@ -105,6 +105,7 @@
 			     yasnippet
 			     company
 			     company-lsp
+			     company-tabnine
 			     company-c-headers
 			     flycheck
 			     cquery
@@ -152,8 +153,14 @@
 (add-to-list 'company-backends 'company-c-headers)
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/7.4.0")
 
-(require 'company-lsp)
-(push 'company-lsp company-backends)
+;;(require 'company-lsp)
+;;(push 'company-lsp company-backends)
+(require 'company-tabnine)
+(add-to-list 'company-backends #'company-tabnine)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 2)
+(setq company-selection-wrap-around t)
+(setq company-show-numbers t)
 
 (require 'flycheck)
 (global-flycheck-mode 1)
